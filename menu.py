@@ -1,42 +1,29 @@
-from candidatos import Candiatos, listar_alunos, mostrar_aluno
+from candidatos.menu_candidato import menu_candidato
 
 def menu():
     print("""
     -------------------------
-          MENU ALUNOS
+          MENU PRINCIPAL
     -------------------------
-    1 - CADASTRAR ALUNO
-    2 - MOSTRAR MÉDIA ALUNO
-    3 - ALUNO ESPECÍFICO   
+    1 - ÁREA ADMINISTRADOR.
+    2 - ÁREA DE CANDIDATO.
+    3 - ÁREA EMPRESA.
+    4 - ÁREA ESCOLAS.  
     0 - SAIR
     -------------------------
     """)
-    
-def cadastrar():
-    nome = input("Qual o nome do aluno: ")
-    media = float(input("Qual a média: "))
-
-    aluno = Aluno(nome, media)
-    aluno.salvar()
-
-def mostrar():
-    for aluno in listar_alunos():
-        aluno.mostrar()
-
-def mostrar_aluno_menu():
-    id_aluno = int(input("Qual o ID do aluno? "))
-    aluno = mostrar_aluno(id_aluno)
-    if aluno:
-        aluno.mostrar_id()
-    else:
-        print("Aluno não encontrado.")
 
 while True:
     menu()
-    opçao = input("Escolha uma opção: ")
-    if opçao == "0":
-        break
-    elif opçao == "1": cadastrar()
-    elif opçao == "2": mostrar()
-    elif opçao == "3": mostrar_aluno_menu()
-    else: print("Opção inválida.")
+    try:
+        opçao = input("Escolha uma opção: ")
+        if opçao == "0":
+            break
+        elif opçao == "1": menu_administrador()
+        elif opçao == "2": menu_candidato()
+        elif opçao == "3": menu_empresa()
+        elif opçao == "4": menu_escola()
+        else: print("Opção inválida.")
+
+    except ValueError:
+        print("Erro: Digita direito abestado!")

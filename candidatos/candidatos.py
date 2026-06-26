@@ -1,5 +1,3 @@
-from conexao import conectar
-
 class Candidatos:
     def __init__(self, nome_completo, data_nascimento, cpf, email, genero, cidade, estado, rua, bairro, numero, complemento, CEP, telefone, PCD, nome_responsavel, escolaridade, resumo_profissional, habilidades, links, senha, id_aluno = None, data_cadastro = None, status = None):
         self.id_aluno = id_aluno
@@ -117,7 +115,7 @@ def mostrar_candidato_por_codigo(id_candidato):
 
     if resultado:
         cod, nome_completo, data_nascimento, cpf, email, genero, cidade, estado, rua, bairro, numero, complemento, CEP, telefone, PCD, nome_responsavel, escolaridade, resumo_profissional, habilidades, links, cadastrado_em, status = resultado
-        
+
         return Candidatos(id_candidato=cod, nome_completo=nome_completo, data_nascimento=data_nascimento, cpf=cpf, email=email, genero=genero, cidade=cidade, estado=estado, rua=rua, bairro=bairro, numero=numero, complemento=complemento, CEP=CEP, telefone=telefone, PCD=PCD, nome_responsavel=nome_responsavel, escolaridade=escolaridade, resumo_profissional=resumo_profissional, habilidades=habilidades, links=links, cadastrado_em=cadastrado_em, status=status)
 
     return None
