@@ -1,4 +1,5 @@
 from candidatos.menu_candidato import menu_candidato
+from empresas.menu_empresa import menu_empresa
 
 def menu():
     print("""
@@ -19,10 +20,10 @@ while True:
         opçao = input("Escolha uma opção: ")
         if opçao == "0":
             break
-        elif opçao == "1": menu_administrador()
+        elif opçao == "1": ...
         elif opçao == "2": menu_candidato()
         elif opçao == "3": menu_empresa()
-        elif opçao == "4": menu_escola()
+        elif opçao == "4": ...
         else: print("Opção inválida.")
 
     except ValueError:
