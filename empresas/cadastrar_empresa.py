@@ -5,6 +5,8 @@ from datetime import datetime
 def cadastrar_empresa():
     try:
         nome_fantasia = input("Qual o nome fantasia da empresa: ")
+        objeto_data = datetime.strptime(data_fundacao, "%d/%m/%Y") # Converte DD/MM/AAAA para o formato do MySQL (AAAA-MM-DD)
+        data_fundacao = objeto_data.strftime("%Y-%m-%d")
         razao_social = input("Qual a razão social da empresa: ")
         cnpj = int(input("Qual o número do CNPJ: "))
         email = input("Qual o email da empresa: ")

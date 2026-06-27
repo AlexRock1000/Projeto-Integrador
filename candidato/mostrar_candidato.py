@@ -9,8 +9,16 @@ def listar_candidatos():
     cursor.execute(sql)
 
     candidatos = []
-    for id_candidato, nome_completo, data_nascimento, cpf, email, genero, cidade, estado, bairro, complemento, CEP, telefone, PCD, nome_responsavel, escolaridade, resumo_profissional, habilidades, links, cadastrado_em, status in cursor.fetchall():
-        candidato = Candidato(id_candidato, nome_completo, data_nascimento, cpf, email, genero, cidade, estado, bairro, complemento, CEP, telefone, PCD, nome_responsavel, escolaridade, resumo_profissional, habilidades, links, cadastrado_em, status)
+    for registro in cursor.fetchall():
+        # Desestrutura a tupla explicitamente
+        (id_cand, nome, num_cpf, dt_nasc, gen, mail, tel, num_cep, end, bai, 
+         cid, est, esc, inst, cur, res, hab, curr_url, lnk_url, pwd) = registro
+        
+        # Cria o objeto passando os nomes dos parâmetros de forma segura
+        candidato = Candidato(id_candidato=id_cand, nome_completo=nome, cpf=num_cpf, data_nascimento=dt_nasc, genero=gen, email=mail, telefone=tel, cep=num_cep, endereco=end, bairro=bai, cidade=cid, estado=est, escolaridade=esc, instituicao_ensino=inst, curso=cur, resumo_profissional=res); candidato.habilidades=hab; candidato.curriculo_url=curr_url; candidato.linkedin_url=lnk_url; candidato.senha=pwd
+
+        candidato = Candidato(id_candidato=id_cand, nome_completo=nome, cpf=num_cpf, data_nascimento=dt_nasc, genero=gen, email=mail, telefone=tel, cep=num_cep, endereco=end, bairro=bai, cidade=cid, estado=est, escolaridade=esc, instituicao_ensino=inst, curso=cur, resumo_profissional=res, habilidades=hab, curriculo_url=curr_url, linkedin_url=lnk_url, senha=pwd)
+
         candidatos.append(candidato)
 
     conexao.close()
@@ -20,7 +28,8 @@ def mostrar_candidato_por_codigo(id_candidato):
     conexao = conectar()
     cursor = conexao.cursor()
 
-    sql = "SELECT id_candidato, nome_completo, data_nascimento, cpf, email, genero, cidade, estado, bairro, complemento, CEP, telefone, PCD, nome_responsavel, escolaridade, resumo_profissional, habilidades, links, cadastrado_em, status FROM candidato WHERE id_candidato = %s"
+    sql = "SELECT id_candidato, nome_completo, cpf, data_nascimento, genero, email, telefone, cep, endereco, bairro, cidade, estado, escolaridade, instituicao_ensino, curso, resumo_profissional, habilidades, curriculo_url, linkedin_url, senha FROM candidato WHERE id_candidato = %s"
+
     cursor.execute(sql, (id_candidato,))
 
     # Buscar apenas um registro
@@ -28,8 +37,8 @@ def mostrar_candidato_por_codigo(id_candidato):
     conexao.close()
 
     if resultado:
-        cod, nome_completo, data_nascimento, cpf, email, genero, cidade, estado, bairro, complemento, CEP, telefone, PCD, nome_responsavel, escolaridade, resumo_profissional, habilidades, links, cadastrado_em, status = resultado
+        (cod, nome, num_cpf, dt_nasc, gen, mail, tel, num_cep, end, bai, cid, est, esc, inst, cur, res, hab, curr_url, lnk_url, pwd) = resultado
 
-        return Candidato(id_candidato=cod, nome_completo=nome_completo, data_nascimento=data_nascimento, cpf=cpf, email=email, genero=genero, cidade=cidade, estado=estado, bairro=bairro, complemento=complemento, CEP=CEP, telefone=telefone, PCD=PCD, nome_responsavel=nome_responsavel, escolaridade=escolaridade, resumo_profissional=resumo_profissional, habilidades=habilidades, links=links, cadastrado_em=cadastrado_em, status=status)
-
+        return Candidato(id_candidato=cod, nome_completo=nome, cpf=num_cpf, data_nascimento=dt_nasc, genero=gen, email=mail, telefone=tel, cep=num_cep, endereco=end, bairro=bai, cidade=cid, estado=est, escolaridade=esc, instituicao_ensino=inst, curso=cur, resumo_profissional=res, habilidades=hab, curriculo_url=curr_url, linkedin_url=lnk_url, senha=pwd)
+        
     return None
