@@ -1,5 +1,5 @@
 from conexao import conectar
-from candidatos.candidatos import Candidatos
+from candidato.candidato import Candidato
 
 def cadastrar_candidato():
     try:
@@ -11,8 +11,6 @@ def cadastrar_candidato():
         estado = input("Qual estado você mora: ")
         cidade = input("Qual nome da sua cidade: ")
         bairro = input("Qual nome do seu bairro: ")
-        rua = input("Qual o nome da sua rua: ")
-        numero = int(input("Qual o número da sua casa: "))
         complemento = input("Complemento: ")
         CEP = int(input("Qual o CEP: "))
         telefone = int(input("Qual seu telefone: "))
@@ -22,10 +20,11 @@ def cadastrar_candidato():
         resumo_profissional = input("Diga seu resumo profissional: ")
         habilidades = input("Quais são saus habilidades: ")
         links = input("Deseja compartilhar links: ")
+        senha = input("Crie uma senha: ")
 
     except ValueError:
         print("Erro: Por favor, insira os dados corretamente.")
         return
     
-    candidato = Candidatos(nome_completo, data_nascimento, cpf, email, genero, cidade, estado, rua, bairro, numero, complemento, CEP, telefone, PCD, nome_responsavel, escolaridade, resumo_profissional, habilidades, links)
+    candidato = Candidato(nome_completo, data_nascimento, cpf, email, genero, cidade, estado, bairro, complemento, CEP, telefone, PCD, nome_responsavel, escolaridade, resumo_profissional, habilidades, links, senha)
     candidato.salvar()

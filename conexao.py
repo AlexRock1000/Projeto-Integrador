@@ -5,16 +5,22 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def conectar():
-    return mysql.connector.connect(
-        host = os.getenv("DB_HOST"),
-        user = os.getenv("DB_USER"),
-        password = os.getenv("DB_PASSWORD"),
-        database = os.getenv("DB_DATABASE"),
-    )
+    try:
+        return mysql.connector.connect(
+            host=os.getenv("DB_HOST"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            database=os.getenv("DB_DATABASE"),
+        )
+    except mysql.connector.Error as err:
+        print(f"Erro ao conectar ao banco de dados: {err}")
+        raise
 
-conexao = conectar()
-online = conexao.is_connected()
-if not online:
+try:
+    conexao = conectar()
+    online = conexao.is_connected()
+except Exception:
+    online = False
     print("Banco de Dados não conectou.")
-    
-else: print("Banco de Dados conectou.")
+else:
+    print("Banco de Dados conectou.")

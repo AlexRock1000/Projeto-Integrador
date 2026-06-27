@@ -1,4 +1,4 @@
-from candidatos.menu_candidato import menu_candidato
+from candidato.menu_candidato import menu_candidato
 from empresas.menu_empresa import menu_empresa
 
 def menu():

@@ -1,7 +1,6 @@
-from conexao import conectar
-from candidatos.candidatos import Candidatos
-from candidatos.cadastra_candidato import cadastrar_candidato
-from candidatos.mostrar_candidato import listar_candidatos, mostrar_candidato_por_codigo
+from candidato.candidato import Candidato
+from candidato.cadastra_candidato import cadastrar_candidato
+from candidato.mostrar_candidato import listar_candidatos, mostrar_candidato_por_codigo
 
 def menu_candidato():
     print("""

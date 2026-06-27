@@ -1,3 +1,4 @@
+import mysql.connector
 from conexao import conectar
 
 class Empresas:
@@ -64,7 +65,10 @@ class Empresas:
 
         sql = "INSERT INTO empresas (razao_social, nome_fantasia, cnpj, area_atuacao, email, telefone, site, cep, endereco, bairro, cidade, estado, nome_responsavel, cargo_responsavel, descricao, senha, status, data_cadastro) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
-        cursor.execute(sql, (self.razao_social, self.nome_fantasia, self.cnpj, self.area_atuacao, self.email, self.telefone, self.site, self.cep, self.endereco, self.bairro, self.cidade, self.estado, self.nome_responsavel, self.cargo_responsavel, self.descricao, self.senha, self.status, self.data_cadastro))
-
-        conexao.commit()
-        conexao.close()
+        try:
+            cursor.execute(sql, (self.razao_social, self.nome_fantasia, self.cnpj, self.area_atuacao, self.email, self.telefone, self.site, self.cep, self.endereco, self.bairro, self.cidade, self.estado, self.nome_responsavel, self.cargo_responsavel, self.descricao, self.senha, self.status, self.data_cadastro))
+            conexao.commit()
+        except mysql.connector.Error as err:
+            print(f"Erro ao salvar empresa: {err}")
+        finally:
+            conexao.close()
