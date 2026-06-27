@@ -27,3 +27,5 @@ def menu():
 
         except ValueError:
             print("Erro: Digita direito abestado!")
+
+menu()

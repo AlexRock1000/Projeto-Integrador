@@ -5,11 +5,12 @@ from candidato.mostrar_candidato import listar_candidatos, mostrar_candidato_por
 def menu_candidato():
     print("""
     -------------------------
-          MENU PRINCIPAL
+          MENU CANDIDATO
     -------------------------
     1 - CADASTRAR NOVO CANDIDATO
     2 - MOSTRAR CANDIDATOS
-    3 - PROCURAR CANDIDATO POR CÓDIGO  
+    3 - PROCURAR CANDIDATO POR CÓDIGO
+    4 - VOLTAR PARA O MENU PRINCIPAL 
     0 - SAIR
     -------------------------
     """)
@@ -18,10 +19,12 @@ def menu_candidato():
         try:
             opçao = input("Escolha uma opção: ")
             if opçao == "0":
-                break
+                print("Saindo...")
+                exit()
             elif opçao == "1": cadastrar_candidato()
             elif opçao == "2": mostrar_candidatos()
             elif opçao == "3": mostrar_candidato()
+            elif opçao == "4": return
             else: print("Opção inválida.")
 
         except ValueError:

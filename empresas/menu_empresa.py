@@ -5,11 +5,12 @@ from empresas.cadastrar_empresa import cadastrar_empresa
 def menu_empresa():
     print("""
     -------------------------
-          MENU PRINCIPAL
+          MENU EMPRESA
     -------------------------
     1 - CADASTRAR NOVA EMPRESA
     2 - MOSTRAR EMPRESAS
     3 - PROCURAR EMPRESA POR CÓDIGO
+    4 - VOLTAR PARA O MENU PRINCIPAL
     0 - SAIR
     -------------------------
     """)
@@ -18,10 +19,12 @@ def menu_empresa():
         try:
             opçao = input("Escolha uma opção: ")
             if opçao == "0":
-                break
+                print("Saindo...")
+                exit()
             elif opçao == "1": cadastrar_empresa()
             elif opçao == "2": mostrar_empresas()
             elif opçao == "3": mostrar_empresa()
+            elif opçao == "4": return
             else: print("Opção inválida.")
 
         except ValueError:
