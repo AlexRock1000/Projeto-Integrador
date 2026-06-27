@@ -14,17 +14,16 @@ def menu():
     -------------------------
     """)
 
-while True:
-    menu()
-    try:
-        opçao = input("Escolha uma opção: ")
-        if opçao == "0":
-            break
-        elif opçao == "1": ...
-        elif opçao == "2": menu_candidato()
-        elif opçao == "3": menu_empresa()
-        elif opçao == "4": ...
-        else: print("Opção inválida.")
+    while True:
+        try:
+            opçao = input("Escolha uma opção: ")
+            if opçao == "0":
+                break
+            elif opçao == "1": ...
+            elif opçao == "2": menu_candidato()
+            elif opçao == "3": menu_empresa()
+            elif opçao == "4": ...
+            else: print("Opção inválida.")
 
-    except ValueError:
-        print("Erro: Digita direito abestado!")
+        except ValueError:
+            print("Erro: Digita direito abestado!")

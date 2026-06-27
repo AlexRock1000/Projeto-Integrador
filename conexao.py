@@ -1,26 +1,31 @@
 import os
-import mysql.connector
+import pymysql
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def conectar():
     try:
-        return mysql.connector.connect(
-            host=os.getenv("DB_HOST"),
+        conexao = pymysql.connect(
+            host=os.getenv("DB_HOST", "127.0.0.1"),
             user=os.getenv("DB_USER"),
             password=os.getenv("DB_PASSWORD"),
             database=os.getenv("DB_DATABASE"),
+            connect_timeout=5
         )
-    except mysql.connector.Error as err:
-        print(f"Erro ao conectar ao banco de dados: {err}")
-        raise
+        return conexao
+    except pymysql.Error as err:
+        print(f"Erro ao conectar ao banco: {err}")
+        return None
 
-try:
-    conexao = conectar()
-    online = conexao.is_connected()
-except Exception:
-    online = False
-    print("Banco de Dados não conectou.")
-else:
-    print("Banco de Dados conectou.")
+if __name__ == "__main__":
+    print("Iniciando teste de conexão...")
+    try:
+        minha_conexao = conectar()
+        if minha_conexao:
+            print("Sucesso: Banco de Dados conectou!")
+            minha_conexao.close()
+        else:
+            print("Falha: Não foi possível conectar")
+    except Exception as e:
+        print(f"Erro ao conectar: {e}")
