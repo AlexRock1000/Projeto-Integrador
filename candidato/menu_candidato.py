@@ -1,6 +1,7 @@
 from candidato.candidato import Candidato
 from candidato.cadastra_candidato import cadastrar_candidato
 from candidato.mostrar_candidato import listar_candidatos, mostrar_candidato_por_codigo
+from cursos.menu_curso_candidato import opçoes_menu_cursos
 
 def menu_candidato():
     print("""
@@ -9,8 +10,10 @@ def menu_candidato():
     -------------------------
     1 - CADASTRAR NOVO CANDIDATO
     2 - MOSTRAR CANDIDATOS
-    3 - PROCURAR CANDIDATO POR CÓDIGO
-    4 - VOLTAR PARA O MENU PRINCIPAL 
+    3 - MOSTRAR VAGAS
+    4 - MOSTRAR CURSOS
+    5 - PROCURAR CANDIDATO POR CÓDIGO
+    6 - VOLTAR PARA O MENU PRINCIPAL 
     0 - SAIR
     -------------------------
     """)
@@ -25,9 +28,10 @@ def opçoes_menu_candidato():
                 exit()
             elif opçao == "1": cadastrar_candidato()
             elif opçao == "2": mostrar_candidatos()
-            elif opçao == "3": mostrar_candidato()
-            elif opçao == "4": 
-                return
+            elif opçao == "3": mostrar_vagas()
+            elif opçao == "4": opçoes_menu_cursos()
+            elif opçao == "5": mostrar_candidato()
+            elif opçao == "6": return
             else: 
                 print("Opção inválida.")
 
