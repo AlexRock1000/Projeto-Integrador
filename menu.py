@@ -1,3 +1,4 @@
+from administrador.menu_administrador import opçoes_menu_administrador
 from candidato.menu_candidato import opçoes_menu_candidato
 from empresas.menu_empresa import opçoes_menu_empresa
 
@@ -21,7 +22,7 @@ def opçoes_menu():
             opçao = input("Escolha uma opção: ")
             if opçao == "0":
                 break
-            elif opçao == "1": ...
+            elif opçao == "1": opçoes_menu_administrador()
             elif opçao == "2": opçoes_menu_candidato()
             elif opçao == "3": opçoes_menu_empresa()
             elif opçao == "4": ...

@@ -1,6 +1,4 @@
-from conexao import conectar
 from empresas.empresas import Empresas
-from datetime import datetime
 
 def cadastrar_empresa():
     try:

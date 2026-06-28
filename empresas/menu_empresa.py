@@ -1,4 +1,3 @@
-from candidato import candidato
 from empresas.empresas import Empresas
 from empresas.mostrar_empresa import listar_empresas, mostrar_empresa_por_codigo
 from empresas.cadastrar_empresa import cadastrar_empresa
