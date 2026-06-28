@@ -15,7 +15,9 @@ def menu_candidato():
     -------------------------
     """)
 
+def opçoes_menu_candidato():
     while True:
+        menu_candidato()
         try:
             opçao = input("Escolha uma opção: ")
             if opçao == "0":
@@ -24,14 +26,21 @@ def menu_candidato():
             elif opçao == "1": cadastrar_candidato()
             elif opçao == "2": mostrar_candidatos()
             elif opçao == "3": mostrar_candidato()
-            elif opçao == "4": return
-            else: print("Opção inválida.")
+            elif opçao == "4": 
+                return
+            else: 
+                print("Opção inválida.")
 
         except ValueError:
             print("Erro: Digita direito abestado!")
 
 def mostrar_candidatos():
-    for candidato in listar_candidatos():
+    candidatos = listar_candidatos()
+    if not candidatos:
+        print("\nNenhum candidato cadastrado.")
+        return
+
+    for candidato in candidatos:
         candidato.mostrar()
 
 def mostrar_candidato():
@@ -39,9 +48,9 @@ def mostrar_candidato():
         codigo = int(input("Qual o código do candidato: "))
         candidato = mostrar_candidato_por_codigo(codigo)
         if candidato:
-            candidato.mostrar_por_codigo()
+            candidato.mostrar()
         else:
-            print("Candidato não encontrado.")
+            print("\nCandidato não encontrado.")
 
     except ValueError:
         print("Erro: Insira um código válido.")

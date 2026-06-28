@@ -68,6 +68,7 @@ class Candidato:
         valores = (self.nome_completo, self.cpf, self.data_nascimento, self.genero, self.email, self.telefone, self.cep, self.endereco, self.bairro, self.cidade, self.estado, self.escolaridade, self.instituicao_ensino, self.curso, self.resumo_profissional, self.habilidades, self.curriculo_url, self.linkedin_url, self.senha, self.status_conta, self.data_cadastro)
 
         cursor.execute(sql, valores)
+        print(f"Candidato {self.nome_completo} salvo com sucesso!")
         conexao.commit()
         
         # Recupera o ID gerado pelo banco e salva no objeto

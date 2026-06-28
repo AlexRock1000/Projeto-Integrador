@@ -63,5 +63,6 @@ def cadastrar_candidato():
         print(f"\nErro: Dados inválidos ou formato incorreto! ({e})")
         return
     
-    candidato = Candidato(nome_completo, cpf, data_nascimento, genero, email, telefone, cep, endereco, bairro, cidade=cidade, estado=estado, escolaridade=escolaridade, instituicao_ensino=instituicao_ensino, curso=curso, resumo_profissional=resumo_profissional, habilidades=habilidades, curriculo_url=curriculo_url, linkedin_url=linkedin_url, senha=senha)
+    candidato = Candidato(nome_completo=nome_completo, cpf=cpf, data_nascimento=data_nascimento, genero=genero, email=email, telefone=telefone, cep=cep, endereco=endereco, bairro=bairro, cidade=cidade, estado=estado, escolaridade=escolaridade,instituicao_ensino=instituicao_ensino, curso=curso, resumo_profissional=resumo_profissional, habilidades=habilidades, curriculo_url=curriculo_url, linkedin_url=linkedin_url, senha=senha)
+    
     candidato.salvar()

@@ -1,3 +1,4 @@
+from candidato import candidato
 from empresas.empresas import Empresas
 from empresas.mostrar_empresa import listar_empresas, mostrar_empresa_por_codigo
 from empresas.cadastrar_empresa import cadastrar_empresa
@@ -15,7 +16,9 @@ def menu_empresa():
     -------------------------
     """)
 
+def opçoes_menu_empresa():
     while True:
+        menu_empresa()
         try:
             opçao = input("Escolha uma opção: ")
             if opçao == "0":
@@ -31,7 +34,12 @@ def menu_empresa():
             print("Erro: Digita direito abestado!")
 
 def mostrar_empresas():
-    for empresa in listar_empresas():
+    empresas = listar_empresas()
+    if not empresas:
+        print("Nenhuma empresa cadastrada.")
+        return
+
+    for empresa in empresas:
         empresa.mostrar()
 
 def mostrar_empresa():

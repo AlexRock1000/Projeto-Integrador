@@ -10,14 +10,9 @@ def listar_candidatos():
 
     candidatos = []
     for registro in cursor.fetchall():
-        # Desestrutura a tupla explicitamente
-        (id_cand, nome, num_cpf, dt_nasc, gen, mail, tel, num_cep, end, bai, 
-         cid, est, esc, inst, cur, res, hab, curr_url, lnk_url, pwd) = registro
-        
-        # Cria o objeto passando os nomes dos parâmetros de forma segura
-        candidato = Candidato(id_candidato=id_cand, nome_completo=nome, cpf=num_cpf, data_nascimento=dt_nasc, genero=gen, email=mail, telefone=tel, cep=num_cep, endereco=end, bairro=bai, cidade=cid, estado=est, escolaridade=esc, instituicao_ensino=inst, curso=cur, resumo_profissional=res); candidato.habilidades=hab; candidato.curriculo_url=curr_url; candidato.linkedin_url=lnk_url; candidato.senha=pwd
+        (id_cand, nome, num_cpf, dt_nasc, gen, mail, tel, num_cep, end, bai, cid, est, esc, inst, cur, res, hab, curr_url, lnk_url, pwd, status_conta, data_cadastro) = registro
 
-        candidato = Candidato(id_candidato=id_cand, nome_completo=nome, cpf=num_cpf, data_nascimento=dt_nasc, genero=gen, email=mail, telefone=tel, cep=num_cep, endereco=end, bairro=bai, cidade=cid, estado=est, escolaridade=esc, instituicao_ensino=inst, curso=cur, resumo_profissional=res, habilidades=hab, curriculo_url=curr_url, linkedin_url=lnk_url, senha=pwd)
+        candidato = Candidato(id_candidato=id_cand, nome_completo=nome, cpf=num_cpf, data_nascimento=dt_nasc, genero=gen, email=mail, telefone=tel, cep=num_cep, endereco=end, bairro=bai, cidade=cid, estado=est, escolaridade=esc, instituicao_ensino=inst, curso=cur, resumo_profissional=res, habilidades=hab, curriculo_url=curr_url, linkedin_url=lnk_url, senha=pwd, status_conta=status_conta, data_cadastro=data_cadastro)
 
         candidatos.append(candidato)
 
