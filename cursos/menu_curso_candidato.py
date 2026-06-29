@@ -1,6 +1,6 @@
 from cursos.mostrar_cursos import listar_cursos, mostrar_curso_por_codigo
 
-def menu_cursos():
+def menu_cursos_candidato():
     print("""
     -------------------------
           MENU CURSOS
@@ -14,7 +14,7 @@ def menu_cursos():
 
 def opçoes_menu_cursos():
     while True:
-        menu_cursos()
+        menu_cursos_candidato()
         try:
             opçao = input("Escolha uma opção: ")
             if opçao == "0":

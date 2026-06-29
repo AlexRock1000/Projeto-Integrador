@@ -1,7 +1,5 @@
-from empresas.empresas import Empresas
 from empresas.mostrar_empresa import listar_empresas, mostrar_empresa_por_codigo
 from empresas.cadastrar_empresa import cadastrar_empresa
-from vagas.cadastrar_vagas import cadastrar_vagas
 
 def menu_empresa():
     print("""
@@ -17,7 +15,7 @@ def menu_empresa():
     -------------------------
     """)
 
-def opçoes_menu_empresa(id_empresa_logada):
+def opçoes_menu_empresa():
     while True:
         menu_empresa()
         try:
@@ -28,7 +26,13 @@ def opçoes_menu_empresa(id_empresa_logada):
             elif opçao == "1": cadastrar_empresa()
             elif opçao == "2": mostrar_empresas()
             elif opçao == "3": mostrar_empresa()
-            elif opçao == "4": cadastrar_vagas(id_empresa_logada)
+            elif opçao == "4": 
+                from empresas.autenticacao import realizar_login_empresa, cadastrar_vaga
+                sucesso_login = realizar_login_empresa()
+                if sucesso_login:
+                    cadastrar_vaga(sucesso_login)
+                    
+                else: print("Precisa está logado para cadastrar uma vaga!")
             elif opçao == "5": return
             else: print("Opção inválida.")
 

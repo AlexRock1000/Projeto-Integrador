@@ -1,26 +1,26 @@
-from vagas.cadastrar_vagas import cadastrar_vagas
+from cursos.cadastrar_cursos import cadastrar_curso
 
-def menu_vagas_empresa():
+def menu_curso_instituicao():
     print("""
     -------------------------
-            MENU VAGAS
+            MENU CURSOS
     -------------------------
-    1 - CADASTRAR UMA NOVA VAGA
-    2 - MOSTRAR VAGAS CADASTRADAS
+    1 - CADASTRAR UMA NOVO CURSO
+    2 - MOSTRAR CURSOS CADASTRADOS
     3 - VOLTAR PARA O MENU ANTERIOR
     0 - SAIR
     -------------------------
     """)
 
-def opçoes_menu_vagas_empresa(id_empresa_logada):
+def opçoes_menu_cursos(id_instituicao_logada):
     while True:
-        menu_vagas_empresa()
+        menu_curso_instituicao()
         try:
             opçao = input("Escolha uma opção: ")
             if opçao == "0":
                 print("Saindo...")
                 exit()
-            elif opçao == "1": cadastrar_vagas(id_empresa_logada)
+            elif opçao == "1": cadastrar_curso(id_instituicao_logada)
             elif opçao == "2": ...
             elif opçao == "3": return
             else: 
@@ -29,11 +29,11 @@ def opçoes_menu_vagas_empresa(id_empresa_logada):
         except ValueError:
             print("Erro: Digita direito abestado!")
 
-def mostrar_vagas_cadastradas():
-    vagas = listar_vagas()
-    if not vagas:
-        print("\nNenhuma vaga cadastrada.")
+def mostrar_cursos_cadastrados():
+    cursos = listar_cursos()
+    if not cursos:
+        print("\nNenhum curso cadastrado.")
         return
 
-    for vaga in vagas:
-        vaga.mostrar()
+    for curso in cursos:
+        curso.mostrar()
