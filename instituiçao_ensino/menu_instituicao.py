@@ -1,6 +1,6 @@
 from instituiçao_ensino.cadastro_instituicao import cadastrar_instituicaoEnsino
 from instituiçao_ensino.mostrar_instituicao import listar_instituicaoEnsino, mostrar_instituicao_por_codigo
-
+from cursos.cadastrar_cursos import cadastrar_curso
 
 def menu_instituicao():
     print("""
@@ -10,7 +10,8 @@ def menu_instituicao():
     1 - CADASTRAR NOVA INSTITUIÇÃO DE ENSINO
     2 - MOSTRAR INSTITUIÇÕES DE ENSINO
     3 - PROCURAR INSTITUIÇÃO DE ENSINO POR CÓDIGO
-    4 - VOLTAR PARA O MENU PRINCIPAL
+    4 - CADASTRAR CURSO
+    5 - VOLTAR PARA O MENU PRINCIPAL
     0 - SAIR
     -------------------------
     """)
@@ -26,7 +27,8 @@ def opçoes_menu_instituicao():
             elif opçao == "1": cadastrar_instituicaoEnsino()
             elif opçao == "2": mostrar_instituicoes()
             elif opçao == "3": mostrar_instituicao()
-            elif opçao == "4": return
+            elif opçao == "4": cadastrar_curso()
+            elif opçao == "5": return
             else: print("Opção inválida.")
 
         except ValueError:

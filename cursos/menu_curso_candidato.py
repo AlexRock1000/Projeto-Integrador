@@ -1,4 +1,3 @@
-from cursos.cursos import Cursos
 from cursos.mostrar_cursos import listar_cursos, mostrar_curso_por_codigo
 
 def menu_cursos():
@@ -8,7 +7,7 @@ def menu_cursos():
     -------------------------
     1 - MOSTRAR TODOS CURSOS
     2 - PROCURAR CURSO POR CÓDIGO
-    3 - VOLTAR PARA O MENU PRINCIPAL 
+    3 - VOLTAR PARA O MENU ANTERIOR 
     0 - SAIR
     -------------------------
     """)

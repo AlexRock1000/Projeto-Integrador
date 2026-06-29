@@ -1,6 +1,7 @@
 from empresas.empresas import Empresas
 from empresas.mostrar_empresa import listar_empresas, mostrar_empresa_por_codigo
 from empresas.cadastrar_empresa import cadastrar_empresa
+from vagas.cadastrar_vagas import cadastrar_vagas
 
 def menu_empresa():
     print("""
@@ -10,12 +11,13 @@ def menu_empresa():
     1 - CADASTRAR NOVA EMPRESA
     2 - MOSTRAR EMPRESAS
     3 - PROCURAR EMPRESA POR CÓDIGO
-    4 - VOLTAR PARA O MENU PRINCIPAL
+    4 - CADASTRAR UMA VAGA
+    5 - VOLTAR PARA O MENU PRINCIPAL
     0 - SAIR
     -------------------------
     """)
 
-def opçoes_menu_empresa():
+def opçoes_menu_empresa(id_empresa_logada):
     while True:
         menu_empresa()
         try:
@@ -26,7 +28,8 @@ def opçoes_menu_empresa():
             elif opçao == "1": cadastrar_empresa()
             elif opçao == "2": mostrar_empresas()
             elif opçao == "3": mostrar_empresa()
-            elif opçao == "4": return
+            elif opçao == "4": cadastrar_vagas(id_empresa_logada)
+            elif opçao == "5": return
             else: print("Opção inválida.")
 
         except ValueError:

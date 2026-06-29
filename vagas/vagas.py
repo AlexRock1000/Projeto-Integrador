@@ -1,6 +1,5 @@
 from conexao import conectar
 
-
 class Vagas:
     def __init__(self, id_vaga, titulo, descricao, tipo_vaga, area_atuacao, modalidade, carga_horaria, salario, beneficios, requisitos, escolaridade_minima, experiencia_exigida, cidade, estado, quantidade_vagas, data_encerramento, id_empresa, data_publicacao=None, status_vaga="Ativa"):
         self.id_vaga = id_vaga

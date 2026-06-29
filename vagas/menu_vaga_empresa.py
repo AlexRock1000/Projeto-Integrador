@@ -1,27 +1,27 @@
-from vagas.mostrar_vagas import listar_vagas, mostrar_vaga_por_codigo
+from vagas.cadastrar_vagas import cadastrar_vagas
 
-def menu_vagas_candidato():
+def menu_vagas_empresa():
     print("""
     -------------------------
-          MENU VAGAS
+            MENU VAGAS
     -------------------------
-    1 - MOSTRAR TODAS AS VAGAS
-    2 - PROCURAR VAGA POR CÓDIGO
+    1 - CADASTRAR UMA NOVA VAGA
+    2 - MOSTRAR VAGAS CADASTRADAS
     3 - VOLTAR PARA O MENU ANTERIOR
     0 - SAIR
     -------------------------
     """)
 
-def opçoes_menu_vagas():
+def opçoes_menu_vagas(id_empresa_logada):
     while True:
-        menu_vagas_candidato()
+        menu_vagas_empresa()
         try:
             opçao = input("Escolha uma opção: ")
             if opçao == "0":
                 print("Saindo...")
                 exit()
-            elif opçao == "1": mostrar_vagas()
-            elif opçao == "2": mostrar_vaga()
+            elif opçao == "1": cadastrar_vagas(id_empresa_logada)
+            elif opçao == "2": ...
             elif opçao == "3": return
             else: 
                 print("Opção inválida.")
@@ -29,7 +29,7 @@ def opçoes_menu_vagas():
         except ValueError:
             print("Erro: Digita direito abestado!")
 
-def mostrar_vagas():
+def mostrar_vagas_cadastradas():
     vagas = listar_vagas()
     if not vagas:
         print("\nNenhuma vaga cadastrada.")
@@ -37,15 +37,3 @@ def mostrar_vagas():
 
     for vaga in vagas:
         vaga.mostrar()
-
-def mostrar_vaga():
-    try:
-        codigo = int(input("Qual o código da vaga: "))
-        vaga = mostrar_vaga_por_codigo(codigo)
-        if vaga:
-            vaga.mostrar()
-        else:
-            print("\nVaga não encontrada.")
-
-    except ValueError:
-        print("Erro: Insira um código válido.")
