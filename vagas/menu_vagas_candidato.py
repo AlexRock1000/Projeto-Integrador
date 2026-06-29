@@ -1,4 +1,3 @@
-from vagas.vagas import Vagas
 from vagas.mostrar_vagas import listar_vagas, mostrar_vaga_por_codigo
 
 def menu_vagas():

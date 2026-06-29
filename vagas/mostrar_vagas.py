@@ -9,12 +9,15 @@ def listar_vagas():
     cursor.execute(sql)
 
     vagas = []
-    for id_vaga, nome_curso, descricao, area_curso, categoria, modalidade, carga_horaria, data_inicio, data_termino, prazo_inscricao, quantidade_vagas, valor, gratuito, certificado, publico_alvo, pre_requisitos, cidade, estado in cursor.fetchall():
+    for id_vaga, titulo, descricao, tipo_vaga, area_atuacao, modalidade, carga_horaria, salario, beneficios, requisitos, escolaridade_minima, experiencia_exigida, cidade, estado, quantidade_vagas, data_publicacao, data_encerramento, status_vaga, id_empresa in cursor.fetchall():
 
-        vaga = Vagas(id_vaga=id_vaga, nome_curso=nome_curso, descricao=descricao, area_curso=area_curso, categoria=categoria, modalidade=modalidade, carga_horaria=carga_horaria, data_inicio=data_inicio, data_termino=data_termino, prazo_inscricao=prazo_inscricao, quantidade_vagas=quantidade_vagas, valor=valor, gratuito=gratuito, certificado=certificado, publico_alvo=publico_alvo, pre_requisitos=pre_requisitos, cidade=cidade, estado=estado)
+        vaga = Vagas(id_vaga=id_vaga, titulo=titulo, descricao=descricao, tipo_vaga=tipo_vaga, area_atuacao=area_atuacao, modalidade=modalidade, carga_horaria=carga_horaria, salario=salario, beneficios=beneficios, requisitos=requisitos, escolaridade_minima=escolaridade_minima, experiencia_exigida=experiencia_exigida, cidade=cidade, estado=estado, quantidade_vagas=quantidade_vagas, data_publicacao=data_publicacao, data_encerramento=data_encerramento, status_vaga=status_vaga, id_empresa=id_empresa)
+
         vagas.append(vaga)
 
+    cursor.close()
     conexao.close()
+
     return vagas
 
 def mostrar_vaga_por_codigo(id_vaga):
@@ -22,14 +25,16 @@ def mostrar_vaga_por_codigo(id_vaga):
     cursor = conexao.cursor()
 
     sql = "SELECT * FROM vaga WHERE id_vaga = %s"
-    cursor.execute(sql, (id_curso,))
+    cursor.execute(sql, (id_vaga,))
 
     resultado = cursor.fetchone()
+
+    cursor.close()
     conexao.close()
 
     if resultado:
-        id_curso, nome_curso, descricao, area_curso, categoria, modalidade, carga_horaria, data_inicio, data_termino, prazo_inscricao, quantidade_vagas, valor, gratuito, certificado, publico_alvo, pre_requisitos, cidade, estado = resultado
+        id_vaga, titulo, descricao, tipo_vaga, area_atuacao, modalidade, carga_horaria, salario, beneficios, requisitos, escolaridade_minima, experiencia_exigida, cidade, estado, quantidade_vagas, data_publicacao, data_encerramento, status_vaga, id_empresa = resultado
 
-        return Vagas(id_curso=id_curso, nome_curso=nome_curso, descricao=descricao, area_curso=area_curso, categoria=categoria, modalidade=modalidade, carga_horaria=carga_horaria, data_inicio=data_inicio, data_termino=data_termino, prazo_inscricao=prazo_inscricao, quantidade_vagas=quantidade_vagas, valor=valor, gratuito=gratuito, certificado=certificado, publico_alvo=publico_alvo, pre_requisitos=pre_requisitos, cidade=cidade, estado=estado)
+        return Vagas(id_vaga=id_vaga, titulo=titulo, descricao=descricao, tipo_vaga=tipo_vaga, area_atuacao=area_atuacao, modalidade=modalidade, carga_horaria=carga_horaria, salario=salario, beneficios=beneficios, requisitos=requisitos, escolaridade_minima=escolaridade_minima, experiencia_exigida=experiencia_exigida, cidade=cidade, estado=estado, quantidade_vagas=quantidade_vagas, data_publicacao=data_publicacao, data_encerramento=data_encerramento, status_vaga=status_vaga, id_empresa=id_empresa)
 
     return None

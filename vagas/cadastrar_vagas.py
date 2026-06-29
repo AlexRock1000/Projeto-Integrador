@@ -1,64 +1,102 @@
 from datetime import datetime
 from vagas.vagas import Vagas
 
-def cadastrar_vagas(id_instituicao_logada):
-    print("\n--- CADASTRO DE NOVA VAGA ---")
+def cadastrar_vagas(id_empresa_logada):
+    print("\n===== CADASTRO DE NOVA VAGA =====")
+
     try:
-        nome_vaga = input("Nome da vaga: ")
+        titulo = input("Título da vaga: ")
         descricao = input("Descrição da vaga: ")
-        area_vaga = input("Área da vaga (ex: Tecnologia): ")
-        categoria = input("Categoria da vaga: ")
         print("""
-              Categorias válidas: 
-              Profissionalizante
-              Técnico
-              Extensão
-              Livre
-              Workshop
-              """)
-        modalidade = input("Modalidade da vaga: ")
+        Tipos de vaga:
+        1 - Emprego
+        2 - Estágio
+        3 - Jovem Aprendiz
+        4 - Trainee
+        """)
+
+        tipos = {
+        "1": "Emprego",
+        "2": "Estágio",
+        "3": "Jovem Aprendiz",
+        "4": "Trainee"}
+
+        tipo_vaga = tipos.get(input("Escolha: "), "Emprego")
+        area_atuacao = input("Área de atuação: ")
         print("""
-              Modalidades válidas: 
-              Presencial
-              Online
-              Híbrido
-              """)
-        
+        Modalidade:
+        1 - Presencial
+        2 - Híbrido
+        3 - Remoto
+        """)
+
+        modalidades = {
+        "1": "Presencial",
+        "2": "Híbrido",
+        "3": "Remoto"}
+
+        modalidade = modalidades.get(input("Escolha: "), "Presencial")
         carga_horaria = input("Carga horária: ")
-        # Validação da Data
-        data_inicio = input("Data de início (Deixe vazio se não houver): ")
-        objeto_data = datetime.strptime(data_inicio, "%d/%m/%Y")
-        data_inicio = objeto_data.strftime("%Y-%m-%d")
-    
-        data_termino = input("Data de término (Deixe vazio se não houver): ")
-        objeto_data = datetime.strptime(data_termino, "%d/%m/%Y")
-        data_termino = objeto_data.strftime("%Y-%m-%d")
+        salario = float(input("Salário: "))
+        beneficios = input("Benefícios: ")
+        requisitos = input("Requisitos: ")
+        print("""
+        Escolaridade mínima:
+        1 - Ensino Fundamental Incompleto
+        2 - Ensino Fundamental Completo
+        3 - Ensino Médio Incompleto
+        4 - Ensino Médio Completo
+        5 - Ensino Superior Incompleto
+        6 - Ensino Superior Completo
+        7 - Pós-Graduação
+        """)
 
-        prazo_inscricao = input("Prazo de inscrição (Deixe vazio se não houver): ")
-        objeto_data = datetime.strptime(prazo_inscricao, "%d/%m/%Y")
-        prazo_inscricao = objeto_data.strftime("%Y-%m-%d")
+        escolaridades = {
+        "1": "Ensino Fundamental Incompleto",
+        "2": "Ensino Fundamental Completo",
+        "3": "Ensino Médio Incompleto",
+        "4": "Ensino Médio Completo",
+        "5": "Ensino Superior Incompleto",
+        "6": "Ensino Superior Completo",
+        "7": "Pós-Graduação"
+        }
+        escolaridade_minima = escolaridades.get(input("Escolha: "),"Ensino Médio Completo")
 
-        vagas_input = input("Quantidade de vagas: ")
-        quantidade_vagas = int(vagas_input) if vagas_input else None
+        print("""
+        Experiência exigida:
+        1 - Sem experiência
+        2 - Até 1 ano
+        3 - De 1 a 3 anos
+        4 - Acima de 3 anos
+        """)
 
-        valor_input = input("Valor do curso: ")
-        valor = float(valor_input) if valor_input else 0.00
+        opcao = input("Escolha uma opção: ")
 
-        gratuito = 1 if valor == 0.00 else 0
+        experiencias = {
+        "1": "Sem experiência",
+        "2": "Até 1 ano",
+        "3": "De 1 a 3 anos",
+        "4": "Acima de 3 anos"}
 
-        print("\nPossui certificado?\n1 - Sim\n2 - Não")
-        certificado_opcao = input("Escolha uma opção: ")
-        certificado = 1 if certificado_opcao == "1" else 0
+        experiencia_exigida = experiencias.get(opcao)
 
-        publico_alvo = input("Público-alvo: ")
-        pre_requisitos = input("Pré-requisitos: ")
+        if experiencia_exigida is None:
+            print("Opção inválida!")
+            return
+        
         cidade = input("Cidade: ")
         estado = input("Estado: ")
+        quantidade_vagas = int(input("Quantidade de vagas: "))
+        data = input("Data de encerramento (dd/mm/aaaa): ")
+
+        if data.strip():
+            data_encerramento = datetime.strptime(data, "%d/%m/%Y").strftime("%Y-%m-%d")
+
+        else: data_encerramento = None
+
+        nova_vaga = Vagas(id_vaga=None, titulo=titulo, descricao=descricao, tipo_vaga=tipo_vaga, area_atuacao=area_atuacao, modalidade=modalidade, carga_horaria=carga_horaria, salario=salario, beneficios=beneficios, requisitos=requisitos, escolaridade_minima=escolaridade_minima, experiencia_exigida=experiencia_exigida, cidade=cidade, estado=estado, quantidade_vagas=quantidade_vagas, data_publicacao=None, data_encerramento=data_encerramento, status_vaga="Ativa", id_empresa=id_empresa_logada)
+
+        nova_vaga.salvar()
 
     except ValueError:
-        print("\nErro: Por favor, insira números válidos para vagas ou valor.")
-        return
-
-    nova_vaga = Vagas(nome_curso=nome_curso, descricao=descricao, area_curso=area_curso, categoria=categoria, modalidade=modalidade, carga_horaria=carga_horaria, data_inicio=data_inicio, data_termino=data_termino, prazo_inscricao=prazo_inscricao, quantidade_vagas=quantidade_vagas, valor=valor, gratuito=gratuito, certificado=certificado, publico_alvo=publico_alvo, pre_requisitos=pre_requisitos, cidade=cidade, estado=estado, id_instituicao=id_instituicao_logada) # Passando o ID da instituição logada no sistema
-    
-    nova_vaga.salvar()
+        print("\nErro: Valor inválido.")

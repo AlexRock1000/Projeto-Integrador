@@ -5,7 +5,6 @@ def cadastrar_instituicaoEnsino():
     try:
         nome_instituicao = input("Qual o nome da instituição de ensino: ")
         cnpj = input("Qual o CNPJ da instituição de ensino: ")
-        
         print("""
         Tipos de instituição disponíveis:
         1 - Universidade
