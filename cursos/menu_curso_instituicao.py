@@ -5,14 +5,14 @@ def menu_curso_instituicao():
     -------------------------
             MENU CURSOS
     -------------------------
-    1 - CADASTRAR UMA NOVO CURSO
+    1 - CADASTRAR UM NOVO CURSO
     2 - MOSTRAR CURSOS CADASTRADOS
     3 - VOLTAR PARA O MENU ANTERIOR
     0 - SAIR
     -------------------------
     """)
 
-def opçoes_menu_cursos(id_instituicao_logada):
+def opçoes_menu_cursos_instituicao(id_instituicao_logada):
     while True:
         menu_curso_instituicao()
         try:

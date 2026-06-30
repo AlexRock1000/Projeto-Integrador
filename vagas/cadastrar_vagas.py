@@ -15,13 +15,9 @@ def cadastrar_vagas(id_empresa_logada):
         4 - Trainee
         """)
 
-        tipos = {
-        "1": "Emprego",
-        "2": "Estágio",
-        "3": "Jovem Aprendiz",
-        "4": "Trainee"}
-
+        tipos = {"1": "Emprego", "2": "Estágio", "3": "Jovem Aprendiz", "4": "Trainee"}
         tipo_vaga = tipos.get(input("Escolha: "), "Emprego")
+
         area_atuacao = input("Área de atuação: ")
         print("""
         Modalidade:
@@ -34,8 +30,8 @@ def cadastrar_vagas(id_empresa_logada):
         "1": "Presencial",
         "2": "Híbrido",
         "3": "Remoto"}
-
         modalidade = modalidades.get(input("Escolha: "), "Presencial")
+        
         carga_horaria = input("Carga horária: ")
         salario = float(input("Salário: "))
         beneficios = input("Benefícios: ")

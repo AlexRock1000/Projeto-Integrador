@@ -21,7 +21,7 @@ def realizar_login_empresa():
     conexao.close()
 
     if empresa:
-        print(f"\nLogin realizado com sucesso! Bem-vindo(a), {empresa[1]}.")
+        print(f"\nLogin realizado com sucesso! Bem-vindo {empresa[1]}.")
         return empresa[0] # Retorna o ID para usarmos nas vagas
     else:
         print("\nErro: CNPJ ou senha incorretos.")

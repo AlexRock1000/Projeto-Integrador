@@ -7,12 +7,14 @@ def menu_cursos_candidato():
     -------------------------
     1 - MOSTRAR TODOS CURSOS
     2 - PROCURAR CURSO POR CÓDIGO
-    3 - VOLTAR PARA O MENU ANTERIOR 
+    3 - SE CANDIDATAR A UM CURSO
+    4 - MEUS CURSOS
+    5 - VOLTAR PARA O MENU ANTERIOR 
     0 - SAIR
     -------------------------
     """)
 
-def opçoes_menu_cursos():
+def opçoes_menu_cursos(id_candidato_logado):
     while True:
         menu_cursos_candidato()
         try:
@@ -22,7 +24,11 @@ def opçoes_menu_cursos():
                 exit()
             elif opçao == "1": mostrar_cursos()
             elif opçao == "2": mostrar_curso()
-            elif opçao == "3": return
+            elif opçao == "3":
+                from cursos.cadastrar_cursos import inscriçao_curso
+                inscriçao_curso(id_candidato_logado)
+            elif opçao == "4": 
+            elif opçao == "5": return
             else: 
                 print("Opção inválida.")
 

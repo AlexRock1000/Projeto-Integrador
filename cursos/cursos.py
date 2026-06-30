@@ -28,14 +28,22 @@ class Cursos:
         print(f"""
     Código do Curso: {self.id_curso}
     Nome: {self.nome_curso}
+    Descrição: {self.descricao}
     Área: {self.area_curso}
     Categoria: {self.categoria}
     Modalidade: {self.modalidade}
     Carga Horária: {self.carga_horaria}
-    Vagas: {self.quantidade_vagas}
+    Data de Início: {self.data_inicio}
+    Data de Termino: {self.data_termino}
+    Prazo de Inscrição: {self.prazo_inscricao}
+    Quantidade de Vagas: {self.quantidade_vagas}
     Valor: R$ {self.valor:.2f}
     Gratuito: {"Sim" if self.gratuito else "Não"}
     Certificado: {"Sim" if self.certificado else "Não"}
+    Público Alvo: {self.publico_alvo}
+    Pré-requisitos: {self.pre_requisitos}
+    Cidade: {self.cidade}
+    Estado: {self.estado}
     Status: {self.status_curso}
     ID Instituição: {self.id_instituicao}
     Cadastrado em: {self.data_cadastro}
@@ -46,7 +54,7 @@ class Cursos:
         cursor = conexao.cursor()
 
         sql = """
-            INSERT INTO curso (nome_curso, descricao, area_curso, categoria, modalidade, carga_horaria, data_inicio, data_termino, prazo_inscricao, quantidade_vagas, valor, gratuito, certificado, publico_alvo, pre_requisitos, cidade, estado) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+            INSERT INTO curso (nome_curso, descricao, area_curso, categoria, modalidade, carga_horaria, data_inicio, data_termino, prazo_inscricao, quantidade_vagas, valor, gratuito, certificado, publico_alvo, pre_requisitos, cidade, estado, status_curso, id_instituicao) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
 
         try:
             cursor.execute(sql, (

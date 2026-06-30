@@ -1,6 +1,6 @@
 from conexao import conectar
 
-def realizar_login():
+def realizar_login_instituicao():
     print("""
     -------------------------
     LOGIN INSTITUIÇÃO DE ENSINO
@@ -10,7 +10,7 @@ def realizar_login():
     senha = input("Digite a senha: ").strip()
 
     conexao = conectar()
-    cursor = conexao.cursor(dictionary=True)
+    cursor = conexao.cursor()
 
     # Busca a instituição de ensino com o cnpj e senha correspondentes
     sql = "SELECT id_instituicao, nome_instituicao FROM instituicao_ensino WHERE cnpj = %s AND senha = %s"
@@ -21,8 +21,12 @@ def realizar_login():
     conexao.close()
 
     if instituicao:
-        print(f"\nLogin realizado com sucesso! Bem-vindo(a), {instituicao[1]}.")
+        print(f"\nLogin realizado com sucesso! Bem-vindo {instituicao[1]}.")
         return instituicao[0]
     else:
         print("\nErro: CNPJ ou senha incorretos.")
         return None
+    
+def cadastrar_curso(id_instituicao_logada):
+    from cursos.menu_curso_instituicao import opçoes_menu_cursos_instituicao
+    opçoes_menu_cursos_instituicao(id_instituicao_logada)

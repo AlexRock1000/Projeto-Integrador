@@ -9,8 +9,8 @@ def menu_candidato():
     1 - CADASTRAR NOVO CANDIDATO
     2 - MOSTRAR CANDIDATOS
     3 - PROCURAR CANDIDATO POR CÓDIGO
-    4 - MOSTRAR VAGAS
-    5 - MOSTRAR CURSOS
+    4 - ÁREA VAGAS
+    5 - ÁREA CURSOS
     6 - VOLTAR PARA O MENU PRINCIPAL 
     0 - SAIR
     -------------------------
@@ -28,11 +28,21 @@ def opçoes_menu_candidato():
             elif opçao == "2": mostrar_candidatos()
             elif opçao == "3": mostrar_candidato()
             elif opçao == "4": 
-                from vagas.menu_vagas_candidato import opçoes_menu_vagas
-                opçoes_menu_vagas()
+                from candidato.autenticacao import realizar_login_candidato #Chamando a função de Login
+                sucesso_login = realizar_login_candidato()
+                if sucesso_login:
+                    from vagas.menu_vagas_candidato import opçoes_menu_vagas
+                    opçoes_menu_vagas(sucesso_login)
+
+                else: print("Precisa está logado para se candidatar a uma vaga!")
             elif opçao == "5":
-                from cursos.menu_curso_candidato import opçoes_menu_cursos
-                opçoes_menu_cursos()
+                from candidato.autenticacao import realizar_login_candidato #Chamando a função de Login
+                sucesso_login = realizar_login_candidato()
+                if sucesso_login:
+                    from cursos.menu_curso_candidato import opçoes_menu_cursos
+                    opçoes_menu_cursos(sucesso_login)
+
+                else: print("Precisa está logado para se candidatar a uma vaga!")
             elif opçao == "6": return
             else: 
                 print("Opção inválida.")
