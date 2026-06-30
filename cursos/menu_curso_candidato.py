@@ -1,4 +1,4 @@
-from cursos.mostrar_cursos import listar_cursos, mostrar_curso_por_codigo
+from cursos.mostrar_cursos import listar_cursos, mostrar_curso_por_codigo, meus_cursos
 
 def menu_cursos_candidato():
     print("""
@@ -27,7 +27,7 @@ def opçoes_menu_cursos(id_candidato_logado):
             elif opçao == "3":
                 from cursos.cadastrar_cursos import inscriçao_curso
                 inscriçao_curso(id_candidato_logado)
-            elif opçao == "4": 
+            elif opçao == "4": meus_cursos(id_candidato_logado)
             elif opçao == "5": return
             else: 
                 print("Opção inválida.")
