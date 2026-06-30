@@ -1,3 +1,4 @@
+from conexao import conectar
 from datetime import datetime
 from vagas.vagas import Vagas
 
@@ -96,3 +97,26 @@ def cadastrar_vagas(id_empresa_logada):
 
     except ValueError:
         print("\nErro: Valor inválido.")
+
+def inscriçao_vaga(id_candidato_logado):
+    try:
+        id_vaga_escolhido = int(input("\nDigite o código da vaga que deseja se candidatar: "))
+        
+    except ValueError:
+        print("Código do curso não encontrado!")
+        return
+
+    conexao = conectar()
+    cursor = conexao.cursor()
+   
+    try:
+        registro = "INSERT INTO inscricao_vaga (id_candidato, id_curso) VALUES (%s, %s)"
+        cursor.execute(registro, (id_candidato_logado, id_vaga_escolhido))
+        conexao.commit()
+        print("\nInscrição realizada com sucesso!")
+
+    except Exception as err:
+        print(f"\nErro ao registrar inscrição: {err}")
+
+    finally:
+        conexao.close()
