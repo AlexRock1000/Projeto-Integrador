@@ -1,12 +1,13 @@
 import os
-import pymysql
+import mysql.connector
+from mysql.connector import Error
 from dotenv import load_dotenv
 
 load_dotenv()
 
 def conectar():
     try:
-        conexao = pymysql.connect(
+        conexao = mysql.connector.connect(
             host=os.getenv("DB_HOST", "127.0.0.1"),
             user=os.getenv("DB_USER"),
             password=os.getenv("DB_PASSWORD"),
@@ -14,7 +15,7 @@ def conectar():
             connect_timeout=5
         )
         return conexao
-    except pymysql.Error as err:
+    except Error as err:
         print(f"Erro ao conectar ao banco: {err}")
         return None
 
