@@ -25,20 +25,13 @@ class InstituicaoEnsino:
         print (f"""
     Código: {self.id_instituicao}
     Nome: {self.nome_instituicao}
-    CNPJ: {self.cnpj}
     Tipo de Instituição: {self.tipo_instituicao}
-    Email: {self.email}
-    Telefone: {self.telefone}
     Endereço: {self.endereco}
     Bairro: {self.bairro}
     Cidade: {self.cidade}
     Estado: {self.estado}
-    Nome do Responsável: {self.nome_responsavel}
-    Cargo do Responsável: {self.cargo_responsavel}
     Descrição: {self.descricao}
-    Senha: {self.senha}
     Status: {self.status_conta}
-    Cadastrado_em: {self.data_cadastro}
     """)
 
     def mostrar_por_codigo(self):

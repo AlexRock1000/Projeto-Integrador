@@ -37,6 +37,21 @@ class Candidato:
     --------------------------------------------------
     Código: {self.id_candidato}
     Nome: {self.nome_completo}
+    Gênero: {self.genero}
+    Endereço: {self.endereco}
+    Bairro: {self.bairro}
+    Cidade: {self.cidade}
+    Estado: {self.estado}
+    Escolaridade: {self.escolaridade}
+    Status da Conta: {self.status_conta}
+    --------------------------------------------------
+    """)
+        
+    def mostrar_por_codigo(self):
+        print(f"""
+    --------------------------------------------------
+    Código: {self.id_candidato}
+    Nome: {self.nome_completo}
     CPF: {self.cpf}
     Data de Nascimento: {self.data_nascimento}
     Gênero: {self.genero}

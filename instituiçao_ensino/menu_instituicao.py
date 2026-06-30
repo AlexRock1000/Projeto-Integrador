@@ -4,13 +4,11 @@ from instituiçao_ensino.mostrar_instituicao import listar_instituicaoEnsino, mo
 def menu_instituicao():
     print("""
     -------------------------
-          MENU INSTITUIÇÃO DE ENSINO
+    MENU INSTITUIÇÃO DE ENSINO
     -------------------------
     1 - CADASTRAR NOVA INSTITUIÇÃO DE ENSINO
-    2 - MOSTRAR INSTITUIÇÕES DE ENSINO
-    3 - PROCURAR INSTITUIÇÃO DE ENSINO POR CÓDIGO
-    4 - CADASTRAR CURSO
-    5 - VOLTAR PARA O MENU PRINCIPAL
+    2 - CADASTRAR CURSO
+    3 - VOLTAR PARA O MENU PRINCIPAL
     0 - SAIR
     -------------------------
     """)
@@ -24,38 +22,15 @@ def opçoes_menu_instituicao():
                 print("Saindo...")
                 exit()
             elif opçao == "1": cadastrar_instituicaoEnsino()
-            elif opçao == "2": mostrar_instituicoes()
-            elif opçao == "3": mostrar_instituicao()
-            elif opçao == "4": 
+            elif opçao == "2": 
                 from instituiçao_ensino.autenticacao import realizar_login_instituicao, cadastrar_curso
                 sucesso_login = realizar_login_instituicao()
                 if sucesso_login:
                     cadastrar_curso(sucesso_login)
                     
                 else: print("Precisa está logado para cadastrar uma vaga!")
-            elif opçao == "5": return
+            elif opçao == "3": return
             else: print("Opção inválida.")
 
         except ValueError:
             print("Erro: Digita direito abestado!")
-
-def mostrar_instituicoes():
-    instituicoes = listar_instituicaoEnsino()
-    if not instituicoes:
-        print("Nenhuma instituição de ensino cadastrada.")
-        return
-
-    for instituicao in instituicoes:
-        instituicao.mostrar()
-
-def mostrar_instituicao():
-    try:
-        codigo = int(input("Qual o código da instituição de ensino: "))
-        instituicao = mostrar_instituicao_por_codigo(codigo)
-        if instituicao:
-            instituicao.mostrar_por_codigo()
-        else:
-            print("Instituição de ensino não encontrada.")
-
-    except ValueError:
-        print("Erro: Insira um código válido.")

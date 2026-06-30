@@ -27,18 +27,11 @@ class Empresas:
     Código: {self.id_empresa}
     Nome: {self.nome_fantasia}
     Razão Social: {self.razao_social}
-    CNPJ: {self.cnpj}
-    Email: {self.email}
     Área de Atuação: {self.area_atuacao}
-    Telefone: {self.telefone}
-    Site: {self.site}
-    CEP: {self.cep}
     Endereço: {self.endereco}
     Bairro: {self.bairro}
     Cidade: {self.cidade}
     Estado: {self.estado}
-    Nome do Responsável: {self.nome_responsavel}
-    Cadastrado_em: {self.data_cadastro}
     Status: {self.status_conta}
     """)
 
@@ -49,10 +42,14 @@ class Empresas:
     Razão Social: {self.razao_social}
     CNPJ: {self.cnpj}
     Email: {self.email}
+    Área de Atuação: {self.area_atuacao}
+    Telefone: {self.telefone}
+    Site: {self.site}
+    CEP: {self.cep}
+    Endereço: {self.endereco}
+    Bairro: {self.bairro}
     Cidade: {self.cidade}
     Estado: {self.estado}
-    Bairro: {self.bairro}
-    Telefone: {self.telefone}
     Nome do Responsável: {self.nome_responsavel}
     Cadastrado_em: {self.data_cadastro}
     Status: {self.status_conta}

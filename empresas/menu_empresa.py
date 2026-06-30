@@ -7,12 +7,10 @@ def menu_empresa():
           MENU EMPRESA
     -------------------------
     1 - CADASTRAR NOVA EMPRESA
-    2 - MOSTRAR EMPRESAS
-    3 - PROCURAR EMPRESA POR CÓDIGO
-    4 - CADASTRAR UMA VAGA
-    5 - VOLTAR PARA O MENU PRINCIPAL
+    2 - CADASTRAR UMA VAGA
+    3 - VOLTAR PARA O MENU PRINCIPAL
     0 - SAIR
-    -------------------------
+          -------------------------
     """)
 
 def opçoes_menu_empresa():
@@ -24,38 +22,15 @@ def opçoes_menu_empresa():
                 print("Saindo...")
                 exit()
             elif opçao == "1": cadastrar_empresa()
-            elif opçao == "2": mostrar_empresas()
-            elif opçao == "3": mostrar_empresa()
-            elif opçao == "4": 
+            elif opçao == "2": 
                 from empresas.autenticacao import realizar_login_empresa, cadastrar_vaga
                 sucesso_login = realizar_login_empresa()
                 if sucesso_login:
                     cadastrar_vaga(sucesso_login)
                     
                 else: print("Precisa está logado para cadastrar uma vaga!")
-            elif opçao == "5": return
+            elif opçao == "3": return
             else: print("Opção inválida.")
 
         except ValueError:
             print("Erro: Digita direito abestado!")
-
-def mostrar_empresas():
-    empresas = listar_empresas()
-    if not empresas:
-        print("Nenhuma empresa cadastrada.")
-        return
-
-    for empresa in empresas:
-        empresa.mostrar()
-
-def mostrar_empresa():
-    try:
-        codigo = int(input("Qual o código da empresa: "))
-        empresa = mostrar_empresa_por_codigo(codigo)
-        if empresa:
-            empresa.mostrar_por_codigo()
-        else:
-            print("Empresa não encontrada.")
-
-    except ValueError:
-        print("Erro: Insira um código válido.")

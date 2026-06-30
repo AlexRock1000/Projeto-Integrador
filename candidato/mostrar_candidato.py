@@ -23,7 +23,7 @@ def mostrar_candidato_por_codigo(id_candidato):
     conexao = conectar()
     cursor = conexao.cursor()
 
-    sql = "SELECT id_candidato, nome_completo, cpf, data_nascimento, genero, email, telefone, cep, endereco, bairro, cidade, estado, escolaridade, instituicao_ensino, curso, resumo_profissional, habilidades, curriculo_url, linkedin_url, senha FROM candidato WHERE id_candidato = %s"
+    sql = "SELECT * FROM candidato WHERE id_candidato = %s"
 
     cursor.execute(sql, (id_candidato,))
 
@@ -32,8 +32,8 @@ def mostrar_candidato_por_codigo(id_candidato):
     conexao.close()
 
     if resultado:
-        (cod, nome, num_cpf, dt_nasc, gen, mail, tel, num_cep, end, bai, cid, est, esc, inst, cur, res, hab, curr_url, lnk_url, pwd) = resultado
+        (cod, nome, num_cpf, dt_nasc, gen, mail, tel, num_cep, end, bai, cid, est, esc, inst, cur, res, hab, curr_url, lnk_url, pwd, status_conta, data_cadastro) = resultado
 
-        return Candidato(id_candidato=cod, nome_completo=nome, cpf=num_cpf, data_nascimento=dt_nasc, genero=gen, email=mail, telefone=tel, cep=num_cep, endereco=end, bairro=bai, cidade=cid, estado=est, escolaridade=esc, instituicao_ensino=inst, curso=cur, resumo_profissional=res, habilidades=hab, curriculo_url=curr_url, linkedin_url=lnk_url, senha=pwd)
+        return Candidato(id_candidato=cod, nome_completo=nome, cpf=num_cpf, data_nascimento=dt_nasc, genero=gen, email=mail, telefone=tel, cep=num_cep, endereco=end, bairro=bai, cidade=cid, estado=est, escolaridade=esc, instituicao_ensino=inst, curso=cur, resumo_profissional=res, habilidades=hab, curriculo_url=curr_url, linkedin_url=lnk_url, senha=pwd, status_conta=status_conta, data_cadastro=data_cadastro)
         
     return None
