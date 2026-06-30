@@ -27,7 +27,7 @@ def opçoes_menu():
             elif opçao == "2": opçoes_menu_candidato()
             elif opçao == "3": opçoes_menu_empresa()
             elif opçao == "4": opçoes_menu_instituicao()
-            else: print("Opção inválida.")
+            else: print("Opção inválida: Digita direito abestado!")
 
         except ValueError:
             print("Erro: Digita direito abestado!")

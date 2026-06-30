@@ -41,7 +41,7 @@ def opçoes_menu_candidato():
                 else: print("Precisa está logado para se candidatar a uma vaga!")
             elif opçao == "0": return
             else: 
-                print("Opção inválida.")
+                print("Opção inválida: Digita direito abestado!")
 
         except ValueError:
             print("Erro: Digita direito abestado!")

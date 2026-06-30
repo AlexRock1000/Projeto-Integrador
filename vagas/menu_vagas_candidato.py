@@ -30,7 +30,7 @@ def opçoes_menu_vagas(id_candidato_logado):
             elif opçao == "4": minhas_vagas(id_candidato_logado)
             elif opçao == "5": return
             else: 
-                print("Opção inválida.")
+                print("Opção inválida: Digita direito abestado!")
 
         except ValueError:
             print("Erro: Digita direito abestado!")

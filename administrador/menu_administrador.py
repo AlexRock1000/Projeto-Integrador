@@ -42,7 +42,7 @@ def opçoes_menu_administrador():
             elif opçao == "8": mostrar_instituicoes()
             elif opçao == "9": mostrar_instituicao()
             elif opçao == "0": return
-            else: print("Opção inválida.")
+            else: print("Opção inválida: Digita direito abestado!")
 
         except ValueError:
             print("Erro: Digita direito abestado!")

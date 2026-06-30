@@ -30,7 +30,7 @@ def opçoes_menu_empresa():
                     
                 else: print("Precisa está logado para cadastrar uma vaga!")
             elif opçao == "3": return
-            else: print("Opção inválida.")
+            else: print("Opção inválida: Digita direito abestado!")
 
         except ValueError:
             print("Erro: Digita direito abestado!")
